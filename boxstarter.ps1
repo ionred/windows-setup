@@ -102,6 +102,19 @@ choco install veracrypt -y
 choco install vlc -y
 choco install plex -y
 choco install nirlauncher --params "'/Sysinternals'"
+choco install plex -y
+choco install battle.net -y
+choco install ssms -y
+choco install logitechgaming -y
+choco install mousewithoutborders -y
+choco install sabnzbd -y
+choco install office365homepremium -y
+choco install myharmony -y
+choco install heidisql -y
+choco install handbrake -y
+choco install cpu-z -y
+choco install hwmonitor -y
+
 
 
 #--- Visual Studio Code
@@ -177,10 +190,10 @@ Get-AppxPackage *MarchofEmpires* | Remove-AppxPackage
 Get-AppxPackage *McAfee* | Remove-AppxPackage
 
 # Uninstall McAfee Security App
-$mcafee = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | foreach { gp $_.PSPath } | ? { $_ -match "McAfee Security" } | select UninstallString
+$mcafee = Get-ChildItem "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | ForEach-Object { Get-ItemProperty $_.PSPath } | Where-Object { $_ -match "McAfee Security" } | Select-Object UninstallString
 if ($mcafee) {
 	$mcafee = $mcafee.UninstallString -Replace "C:\Program Files\McAfee\MSC\mcuihost.exe",""
-	Write "Uninstalling McAfee..."
+	Write-Output "Uninstalling McAfee..."
 	start-process "C:\Program Files\McAfee\MSC\mcuihost.exe" -arg "$mcafee" -Wait
 }
 
