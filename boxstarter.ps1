@@ -55,9 +55,11 @@ Disable-GameBarTips
 #Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -AlwaysShowIconsOn
 
 #--- Windows Subsystems/Features ---
-choco install Microsoft-Hyper-V-All --source='windowsfeatures'
-choco install Microsoft-Windows-Subsystem-Linux --source='windowsfeatures'
-choco install Microsoft-Hyper-V-Hypervisor --source='windowsfeatures'
+choco install Microsoft-Hyper-V-All --source='windowsfeatures' -y
+choco install Microsoft-Windows-Subsystem-Linux --source='windowsfeatures' -y
+choco install HypervisorPlatform --source='windowsfeatures' -y
+choco install Containers-DisposableClientVM --source='windowsfeatures' -y
+
 
 #--- Install Ubuntu in WSL
 curl.exe -L -o ubuntu-1804.appx https://aka.ms/wsl-ubuntu-1804
