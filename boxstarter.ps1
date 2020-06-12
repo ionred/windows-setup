@@ -108,7 +108,7 @@ choco install ssms -y
 choco install logitechgaming -y
 choco install mousewithoutborders -y
 choco install sabnzbd -y
-choco install office365homepremium -y
+choco install microsoft-office-deployment --params="'/64bit /Product:O365ProPlusRetail'"
 choco install myharmony -y
 choco install heidisql -y
 choco install handbrake -y
